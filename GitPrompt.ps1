@@ -108,12 +108,9 @@ function Write-Prompt($Object, $ForegroundColor, $BackgroundColor = -1) {
 }
 
 function Format-BranchName($branchName){
-    $s = $global:GitPromptSettings
-	
-	if($branchName.StartsWith('f'))
-	{
-		$branchName = $branchName.Substring(8, 12)
-	}
+    if ($branchName -match "\/([A-Z]+-.+?)(-|_)") {
+      $branchName = $matches[1]
+    }
 
     return $branchName
 }
