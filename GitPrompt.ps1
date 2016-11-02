@@ -44,7 +44,7 @@ $global:GitPromptSettings = New-Object PSObject -Property @{
     BranchAheadStatusForegroundColor            = [ConsoleColor]::Green
     BranchAheadStatusBackgroundColor            = $Host.UI.RawUI.BackgroundColor
     
-    BranchBehindStatusSymbol                    = [char]0x2193 # Down arrow
+    BranchBehindStatusSymbol                    = [char]0x25cf # Big circle
     BranchBehindStatusForegroundColor           = [ConsoleColor]::Red
     BranchBehindStatusBackgroundColor           = $Host.UI.RawUI.BackgroundColor
     
@@ -138,7 +138,7 @@ function Write-GitStatus($status) {
             $branchStatusForegroundColor = $s.BranchBehindAndAheadStatusForegroundColor
         } elseif ($status.BehindBy -ge 1) {
             # We are behind remote
-            $branchStatusSymbol          = $s.BranchBehindStatusSymbol
+            $branchStatusSymbol          = "$($s.BranchBehindStatusSymbol)$($status.BehindBy)" 
             $branchStatusBackgroundColor = $s.BranchBehindStatusBackgroundColor
             $branchStatusForegroundColor = $s.BranchBehindStatusForegroundColor
         } elseif ($status.AheadBy -ge 1) {
