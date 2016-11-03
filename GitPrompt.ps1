@@ -1,78 +1,80 @@
 # Inspired by Mark Embling
 # http://www.markembling.info/view/my-ideal-powershell-prompt-with-git-integration
 
+$DefaultBackgroundColor = [ConsoleColor]::DarkGray
+
 $global:GitPromptSettings = New-Object PSObject -Property @{
     DefaultForegroundColor                      = $Host.UI.RawUI.ForegroundColor
 
     BeforeText                                  = ' ['
     BeforeForegroundColor                       = [ConsoleColor]::Yellow
-    BeforeBackgroundColor                       = $Host.UI.RawUI.BackgroundColor
+    BeforeBackgroundColor                       = $DefaultBackgroundColor
     
     DelimText                                   = ' | '
     DelimForegroundColor                        = [ConsoleColor]::Yellow
-    DelimBackgroundColor                        = $Host.UI.RawUI.BackgroundColor
+    DelimBackgroundColor                        = $DefaultBackgroundColor
 	
 	IndexBracketColor							= [ConsoleColor]::Yellow
 
     AfterText                                   = ']'
     AfterForegroundColor                        = [ConsoleColor]::Yellow
-    AfterBackgroundColor                        = $Host.UI.RawUI.BackgroundColor
+    AfterBackgroundColor                        = $DefaultBackgroundColor
 
     LocalDefaultStatusSymbol                    = $null
     LocalDefaultStatusForegroundColor           = [ConsoleColor]::DarkGreen
     LocalDefaultStatusForegroundBrightColor     = [ConsoleColor]::Green
-    LocalDefaultStatusBackgroundColor           = $Host.UI.RawUI.BackgroundColor
+    LocalDefaultStatusBackgroundColor           = $DefaultBackgroundColor
     
     LocalWorkingStatusSymbol                    = '!'
     LocalWorkingStatusForegroundColor           = [ConsoleColor]::DarkRed
     LocalWorkingStatusForegroundBrightColor     = [ConsoleColor]::Red
-    LocalWorkingStatusBackgroundColor           = $Host.UI.RawUI.BackgroundColor
+    LocalWorkingStatusBackgroundColor           = $DefaultBackgroundColor
     
     LocalStagedStatusSymbol                     = '~'
     LocalStagedStatusForegroundColor            = [ConsoleColor]::Cyan
-    LocalStagedStatusBackgroundColor            = $Host.UI.RawUI.BackgroundColor
+    LocalStagedStatusBackgroundColor            = $DefaultBackgroundColor
 
     BranchUntrackedSymbol                       = [char]0x2260 # durchgestrichen
     BranchForegroundColor                       = [ConsoleColor]::Cyan
-    BranchBackgroundColor                       = $Host.UI.RawUI.BackgroundColor
+    BranchBackgroundColor                       = $DefaultBackgroundColor
 
     BranchIdenticalStatusToSymbol               = [char]0x263b # Smiley
     BranchIdenticalStatusToForegroundColor      = [ConsoleColor]::Cyan
-    BranchIdenticalStatusToBackgroundColor      = $Host.UI.RawUI.BackgroundColor
+    BranchIdenticalStatusToBackgroundColor      = $DefaultBackgroundColor
     
     BranchAheadStatusSymbol                     = [char]0x2191 # Up arrow
     BranchAheadStatusForegroundColor            = [ConsoleColor]::Green
-    BranchAheadStatusBackgroundColor            = $Host.UI.RawUI.BackgroundColor
+    BranchAheadStatusBackgroundColor            = $DefaultBackgroundColor
     
     BranchBehindStatusSymbol                    = [char]0x25cf # Big circle
     BranchBehindStatusForegroundColor           = [ConsoleColor]::Red
-    BranchBehindStatusBackgroundColor           = $Host.UI.RawUI.BackgroundColor
+    BranchBehindStatusBackgroundColor           = $DefaultBackgroundColor
     
     BranchBehindAndAheadStatusSymbol            = [char]0x2195 # Up & Down arrow
     BranchBehindAndAheadStatusForegroundColor   = [ConsoleColor]::Yellow
-    BranchBehindAndAheadStatusBackgroundColor   = $Host.UI.RawUI.BackgroundColor
+    BranchBehindAndAheadStatusBackgroundColor   = $DefaultBackgroundColor
 
     BeforeIndexText                             = ""
     BeforeIndexForegroundColor                  = [ConsoleColor]::DarkGreen
     BeforeIndexForegroundBrightColor            = [ConsoleColor]::Green
-    BeforeIndexBackgroundColor                  = $Host.UI.RawUI.BackgroundColor
+    BeforeIndexBackgroundColor                  = $DefaultBackgroundColor
 
     IndexForegroundColor                        = [ConsoleColor]::DarkGreen
     IndexForegroundBrightColor                  = [ConsoleColor]::Green
-    IndexBackgroundColor                        = $Host.UI.RawUI.BackgroundColor
+    IndexBackgroundColor                        = $DefaultBackgroundColor
 
     WorkingForegroundColor                      = [ConsoleColor]::DarkRed
     WorkingForegroundBrightColor                = [ConsoleColor]::Red
-    WorkingBackgroundColor                      = $Host.UI.RawUI.BackgroundColor
+    WorkingBackgroundColor                      = $DefaultBackgroundColor
 
     EnableStashStatus         = $false
     BeforeStashText           = ' {'
-    BeforeStashBackgroundColor = $Host.UI.RawUI.BackgroundColor
+    BeforeStashBackgroundColor = $DefaultBackgroundColor
     BeforeStashForegroundColor = [ConsoleColor]::Red
     AfterStashText            = '}'
-    AfterStashBackgroundColor = $Host.UI.RawUI.BackgroundColor
+    AfterStashBackgroundColor = $DefaultBackgroundColor
     AfterStashForegroundColor = [ConsoleColor]::Red
-    StashBackgroundColor      = $Host.UI.RawUI.BackgroundColor
+    StashBackgroundColor      = $DefaultBackgroundColor
     StashForegroundColor      = [ConsoleColor]::Red
 
     ShowStatusWhenZero                          = $true

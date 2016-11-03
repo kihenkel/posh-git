@@ -12,12 +12,17 @@ Import-Module .\posh-git
 function global:prompt {
     $realLASTEXITCODE = $LASTEXITCODE
 
-    Write-Host($pwd.ProviderPath) -nonewline
+    $BackgroundColor = [ConsoleColor]::DarkGray
+    $InputSymbol = [char]0x258c
 
-    Write-VcsStatus
+    Write-Host($pwd.ProviderPath) -nonewline -BackgroundColor $BackgroundColor
+
+    Write-VcsStatus -BackgroundColor $BackgroundColor
+
+    Write-Host " " -nonewline -BackgroundColor $BackgroundColor
 
     $global:LASTEXITCODE = $realLASTEXITCODE
-    return "> "
+    return "$($InputSymbol)"
 }
 
 Pop-Location
