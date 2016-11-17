@@ -140,7 +140,7 @@ function Write-GitStatus($status) {
             $branchStatusForegroundColor = $s.BranchBehindAndAheadStatusForegroundColor
         } elseif ($status.BehindBy -ge 1) {
             # We are behind remote
-            $branchStatusSymbol          = "$($s.BranchBehindStatusSymbol)$($status.BehindBy)" 
+            $branchStatusSymbol          = $s.BranchBehindStatusSymbol
             $branchStatusBackgroundColor = $s.BranchBehindStatusBackgroundColor
             $branchStatusForegroundColor = $s.BranchBehindStatusForegroundColor
         } elseif ($status.AheadBy -ge 1) {

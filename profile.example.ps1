@@ -15,7 +15,11 @@ function global:prompt {
     $BackgroundColor = [ConsoleColor]::DarkGray
     $InputSymbol = [char]0x258c
 
-    Write-Host($pwd.ProviderPath) -nonewline -BackgroundColor $BackgroundColor
+    $IndexOfLastSlash = $pwd.ProviderPath.LastIndexOf("\")
+    $ShortProviderPath = $pwd.ProviderPath.Substring($IndexOfLastSlash + 1)
+    $FancyProviderPath = "$($InputSymbol)$($ShortProviderPath)"
+
+    Write-Host $FancyProviderPath -nonewline -BackgroundColor $BackgroundColor
 
     Write-VcsStatus -BackgroundColor $BackgroundColor
 
