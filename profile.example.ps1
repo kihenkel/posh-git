@@ -15,8 +15,16 @@ function global:prompt {
     $BackgroundColor = [ConsoleColor]::DarkGray
     $InputSymbol = [char]0x258c
 
+    $IndexOfFirstSlash = $pwd.ProviderPath.IndexOf("\")
     $IndexOfLastSlash = $pwd.ProviderPath.LastIndexOf("\")
-    $ShortProviderPath = $pwd.ProviderPath.Substring($IndexOfLastSlash + 1)
+    $ShortProviderPath = ""
+
+    if($IndexOfFirstSlash -eq $IndexOfLastSlash) {
+      $ShortProviderPath = $pwd.ProviderPath
+    } else {
+      $ShortProviderPath = $pwd.ProviderPath.Substring(0, $IndexOfFirstSlash + 1) + "..." + $pwd.ProviderPath.Substring($IndexOfLastSlash)
+    }
+    
     $FancyProviderPath = "$($InputSymbol)$($ShortProviderPath)"
 
     Write-Host $FancyProviderPath -nonewline -BackgroundColor $BackgroundColor
