@@ -46,7 +46,7 @@ $global:GitPromptSettings = New-Object PSObject -Property @{
     BranchAheadStatusForegroundColor            = [ConsoleColor]::Green
     BranchAheadStatusBackgroundColor            = $DefaultBackgroundColor
     
-    BranchBehindStatusSymbol                    = [char]0x25cf # Big circle
+    BranchBehindStatusSymbol                    = [char]0x2193 # Down arrow
     BranchBehindStatusForegroundColor           = [ConsoleColor]::Red
     BranchBehindStatusBackgroundColor           = $DefaultBackgroundColor
     
@@ -91,11 +91,6 @@ $global:GitPromptSettings = New-Object PSObject -Property @{
     Debug                                       = $false
 }
 
-$currentUser = [Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())
-$isAdminProcess = $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-
-$adminHeader = if ($isAdminProcess) { 'Administrator: ' } else { '' }
-
 $WindowTitleSupported = $true
 if (Get-Module NuGet) {
     $WindowTitleSupported = $false
@@ -110,7 +105,7 @@ function Write-Prompt($Object, $ForegroundColor, $BackgroundColor = -1) {
 }
 
 function Format-BranchName($branchName){
-    if ($branchName -match "\/([A-Z]+-.+?)(-|_)") {
+    if ($branchName -match "\/?([A-Z]+-[0-9]+)") {
       $branchName = $matches[1]
     }
 
